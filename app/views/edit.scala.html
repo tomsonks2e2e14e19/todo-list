@@ -10,9 +10,10 @@
         <div class="col-xs-6">
             @b3.formCSRF(routes.UpdateTaskController.update) {
                 @b3.hidden(messageForm("id").name, messageForm("id").value.get)
+                @b3.text(messageForm("status"), '_label -> "Status")
                 @b3.text(messageForm("content"), '_label -> "Message")
                 @b3.submit('class -> "btn btn-default") {
-                    @Messages("タスク更新")
+                    @Messages("UpdateTaskCommit")
                 }
             }
         </div>

@@ -1,8 +1,10 @@
 Id=Id
 Title=タイトル
+Status=ステータス
 Content=内容
 CreateTask=タスク新規作成
 UpdateTask=タスク編集
+UpdateTaskCommit=タスク更新
 DeleteTask=タスク削除
 GetTasks=タスク一覧
 GetTask=タスク詳細
