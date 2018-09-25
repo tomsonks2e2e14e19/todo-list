@@ -25,13 +25,13 @@ class UpdateTaskController @Inject()(components: ControllerComponents)
     form
       .bindFromRequest()
       .fold(
-        formWithErrors => BadRequest(views.html.edit(formWithErrors)), { model =>
-          // 空文字を許さないための処理
-          if (model.status.contains("　") || model.status.contains(" ")) {
-            val filledForm = form.fill(TaskForm(model.id, "ステータスに空文字は不可", model.content))
-            BadRequest(views.html.edit(filledForm))
-          }
-          //
+        {formWithErrors =>
+          val taskId = formWithErrors.data.get("id").get.toLong
+          val result     = Task.findById(taskId).get
+          val filledForm = formWithErrors.fill(TaskForm(Some(taskId), result.status.getOrElse(""), result.content))
+          BadRequest(views.html.edit(filledForm))
+        },
+        { model =>
           implicit val session = AutoSession
           val result = Task
             .updateById(model.id.get)

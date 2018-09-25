@@ -10,7 +10,7 @@ trait TaskControllerSupport { this: AbstractController =>
   protected val form = Form(
     mapping(
       "id"    -> optional(longNumber),
-      "status" -> nonEmptyText,
+      "status" -> text.verifying("error.nonWhitespaceRequired", string => !string.forall(_.isWhitespace)),
       "content"  -> nonEmptyText
     )(TaskForm.apply)(TaskForm.unapply)
   )

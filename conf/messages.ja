@@ -12,3 +12,4 @@ GetTask=タスク詳細
 CreateTaskError=タスク作成エラーが発生しました。
 UpdateTaskError=タスク更新エラーが発生しました。
 DeleteTaskError=タスク作成エラーが発生しました。
+error.nonWhitespaceRequired=空白文字以外を入力してください。
